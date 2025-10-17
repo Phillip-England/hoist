@@ -1,21 +1,24 @@
-
+import path from 'path';
 
 export enum AssetType {
   Dir,
   File,
   RootDir,
 }
-
 export class VirtualAsset {
   assetType: AssetType;
   text: string;
   isRoot: boolean;
   path: string;
+  filename: string;
+  dirname: string;
   constructor(diskType: AssetType, text: string) {
     this.assetType = diskType;
     this.text = text;
     this.isRoot = false;
-    this.path = ''
+    this.path = '';
+    this.filename = '';
+    this.dirname = '';
   }
   static dir(): VirtualAsset {
     let record = new VirtualAsset(AssetType.Dir, '')
@@ -34,6 +37,8 @@ export class VirtualAsset {
   }
   setPath(p: string) {
     this.path = p;
+    this.dirname = path.dirname(p);
+    this.filename = path.basename(p);
   }
   async save() {
     if (this.assetType != AssetType.File) {
