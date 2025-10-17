@@ -106,6 +106,13 @@ export class VirtualFS {
       await asset.save()
     }
   }
+
+  async iterAssets(callback: (asset: VirtualAsset, relativePath: string) => Promise<void> | void): Promise<void> {
+  for (const [relativePath, asset] of Object.entries(this.assets)) {
+    await callback(asset, relativePath);
+  }
+}
+
 }
 
 function convertToRelativePath(absolutePath: string, basePath: string): string {
