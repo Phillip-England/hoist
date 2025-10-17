@@ -1,0 +1,14 @@
+{
+  "name": "hoist",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "floss": "github.com:phillip-england/floss"
+  }
+}
