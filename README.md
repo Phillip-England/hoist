@@ -2,7 +2,7 @@
 A virtual file system for bun.
 
 ## Installation
-bun add github:phillip-england/grub
+bun add github:phillip-england/hoist#v0.0.6
 
 ## Usage
 ```ts

@@ -1,4 +1,5 @@
 import path from 'path';
+import { extname } from 'path';
 
 export enum AssetType {
   Dir,
@@ -12,6 +13,7 @@ export class VirtualAsset {
   path: string;
   filename: string;
   dirname: string;
+  ext: string;
   constructor(diskType: AssetType, text: string) {
     this.assetType = diskType;
     this.text = text;
@@ -19,6 +21,7 @@ export class VirtualAsset {
     this.path = '';
     this.filename = '';
     this.dirname = '';
+    this.ext = '';
   }
   static dir(): VirtualAsset {
     let record = new VirtualAsset(AssetType.Dir, '')
@@ -37,6 +40,7 @@ export class VirtualAsset {
   }
   setPath(p: string) {
     this.path = p;
+    this.ext = extname(p)
     this.dirname = path.dirname(p);
     this.filename = path.basename(p);
   }
